@@ -7,13 +7,13 @@ using Microsoft.EntityFrameworkCore;
 namespace API.Controllers;
 
 
-    [Authorize]
+[Authorize]
 public class UsersController : BaseApiController
 {
     private readonly DataContext _context;
 
     public UsersController(DataContext context)
-{
+    {
         _context = context;
     }
 
@@ -21,11 +21,11 @@ public class UsersController : BaseApiController
     [HttpGet]
     public async Task<ActionResult<IEnumerable<AppUser>>> GetUsers()
     {
-        var users = await  _context.Users.ToListAsync();
+        var users = await _context.Users.ToListAsync();
         return users;
     }
 
-    
+
     [HttpGet("{id}")] // /api/users/1 ==> dynamic routing in next js
     public async Task<ActionResult<AppUser>> GetUser(int id)
     {
