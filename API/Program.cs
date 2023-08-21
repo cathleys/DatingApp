@@ -1,6 +1,7 @@
+using API.Data;
 using API.Extensions;
 using API.Middleware;
-
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,5 +33,23 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+//to create migrations and update the database: EF -> SQL Database
+using var scope = app.Services.CreateScope(); // will get access to all services in this file
+var services = scope.ServiceProvider;
+
+//handles exception
+try
+{
+    var context = services.GetRequiredService<DataContext>();
+    await context.Database.MigrateAsync();
+
+    await Seed.SeedUsers(context);
+}
+catch (Exception ex)
+{
+    var logger = services.GetService<ILogger<Program>>();
+    logger.LogError(ex, "Error occured during migration");
+}
 
 app.Run();
