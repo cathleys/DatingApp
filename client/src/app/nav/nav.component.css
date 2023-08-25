@@ -3,3 +3,10 @@
   text-decoration: none;
   cursor: pointer;
 }
+
+img {
+  max-height: 50px;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  display: inline;
+}
