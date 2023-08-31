@@ -12,14 +12,15 @@ public class TokenService : ITokenService
     public TokenService(IConfiguration config)
     {
         _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["TokenKey"]));
-        
+
     }
     public string CreateToken(AppUser user)
     {
         var claims = new List<Claim>
         {
 
-        new Claim(JwtRegisteredClaimNames.NameId, user.UserName)
+        new Claim(JwtRegisteredClaimNames.NameId, user.Id.ToString()),
+        new Claim(JwtRegisteredClaimNames.UniqueName, user.UserName)
         };
 
 
