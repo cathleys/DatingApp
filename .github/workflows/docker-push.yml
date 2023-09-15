@@ -1,4 +1,4 @@
-name: docker-push
+name: ci docker-push
 
 on:
 workflow_dispatch:
