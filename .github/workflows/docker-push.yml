@@ -1,4 +1,4 @@
-name: ci docker-push
+name: docker-push
 
 on:
 workflow_dispatch:
@@ -20,7 +20,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build and push
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v3
         with:
           context: "{{defaultContext}}:API"
           push: true
