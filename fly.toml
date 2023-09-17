@@ -1,4 +1,4 @@
-# fly.toml app configuration file generated for da-ting-app on 2023-09-15T11:24:10+08:00
+# fly.toml app configuration file generated for da-ting-app on 2023-09-16T12:01:36+08:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
@@ -10,9 +10,9 @@ primary_region = "sin"
   image = "cathleyson/datingapp:latest"
 
 [env]
-  ASPNETCORE_URLS="http://+:8080"
-  CloudinarySettings__CloudName="dr04ygceb"
-  CloudinarySettings__ApiKey="361478783915649"
+  ASPNETCORE_URLS = "http://+:8080"
+  CloudinarySettings__ApiKey = "361478783915649"
+  CloudinarySettings__CloudName = "dr04ygceb"
 
 [http_service]
   internal_port = 8080
